@@ -1,0 +1,64 @@
+﻿<Window x:Name="window" x:Class="KedianSaber.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KedianSaber"
+        mc:Ignorable="d"
+        Title="KedianSaber Alpha v0.1" Height="600" Width="900" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF004878" ResizeMode="CanMinimize" WindowState="Normal" WindowStyle="SingleBorderWindow" Icon="/smallrat.bmp">
+    <Grid>
+        <Border x:Name="AccountLinkPage" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid>
+                <TextBox x:Name="idbox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" Height="90" FontSize="67" Visibility="Visible"/>
+                <TextBlock x:Name="watermarkText" IsHitTestVisible="False" Text="Scoresaber ID" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="DarkGray" FontSize="67">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=idbox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Button x:Name="submitidbutton" Content="Link Account" HorizontalAlignment="Right" Margin="730,0,0,0" VerticalAlignment="Top" Height="90" Width="140" Click="submitidbutton_Click" Visibility="Visible"/>
+                <ProgressBar x:Name="progressBar" HorizontalAlignment="Stretch" Height="30" Margin="10,110,10,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <TextBlock x:Name="progressText" IsHitTestVisible="False" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,110,0,0" FontSize="18" Visibility="Collapsed"/>
+                <Image x:Name="bigrat" Height="420" Margin="10,155,10,10" VerticalAlignment="Stretch" Source="https://bigrat.monster/media/bigrat.png" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                <Label x:Name="bigratlabel" Content="Enjoy big rat while you wait :)" HorizontalAlignment="Center" Margin="0,165,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Arial Black" Foreground="#FF3DE500" Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+
+        <Border x:Name="GraphPage" Visibility="Collapsed">
+            <Grid>
+                <Border x:Name="PlayerProfile" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="135" Width="440">
+                    <Grid>
+                        <Label x:Name="playerNameLabel" Content="Player name" HorizontalAlignment="Left" Margin="145,0,0,0" VerticalAlignment="Top" FontSize="20"/>
+                        <Label x:Name="playerRanksLabel" Content="Rank - Country Rank" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="playerPPLabel" Content="Player pp" HorizontalAlignment="Left" Margin="145,60,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="playerRankedStats" Content="Ranked acc - Ranked play #" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="playerHMDLabel" Content="Player HMD" HorizontalAlignment="Left" Margin="145,110,0,0" VerticalAlignment="Top"/>
+                        <Border x:Name="playerProfileImageBorder" BorderThickness="3" BorderBrush="#FF000000" VerticalAlignment="Top" HorizontalAlignment="Left" Height="135" Width="135">
+                            <Image x:Name="playerProfileImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border x:Name="ScoreProfile" Margin="450,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="135" Width="440">
+                    <Grid>
+                        <Label x:Name="songNameLabel" Content="Name and subname" HorizontalAlignment="Left" Margin="145,0,0,0" VerticalAlignment="Top" FontSize="20"/>
+                        <Label x:Name="artistMapperNameLabel" Content="Artist and mapper" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="plottedDataLabel" Content="Plotted data" HorizontalAlignment="Left" Margin="145,60,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="scorePPLabel" Content="Score pp" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="mapHashLabel" Content="Map hash" HorizontalAlignment="Left" Margin="145,110,0,0" VerticalAlignment="Top" FontSize="10"/>
+                        <Border x:Name="mapCoverImageBorder" BorderThickness="3" BorderBrush="#FF000000" VerticalAlignment="Top" HorizontalAlignment="Left" Height="135" Width="135">
+                            <Image x:Name="mapCoverImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+                        </Border>
+                    </Grid>
+                </Border>
+                <WpfPlot x:Name="plot1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,155,10,10" MouseMove="plot1_MouseMove"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
